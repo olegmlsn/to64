@@ -34,8 +34,7 @@ jobs:
           mkdir -p dist
           ext=""
           if [ "${{ matrix.goos }}" = "windows" ]; then ext=".exe"; fi
-          GOOS=${{ matrix.goos }} GOARCH=${{ matrix.goarch }} go build -o dist/to64-${{ matrix.goos }}-${{ matrix.goarch }}${ext} .
-
+          GOOS=${{ matrix.goos }} GOARCH=${{ matrix.goarch }} go build -o dist/to64-${{ matrix.goos }}-${{ matrix.goarch }}${ext} ./cmd
       - name: Upload artifacts to release
         uses: softprops/action-gh-release@v2
         with:
